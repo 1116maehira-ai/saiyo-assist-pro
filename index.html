@@ -527,9 +527,20 @@
     box-shadow: 0 20px 48px -12px rgba(249,115,22,0.5);
   }
 
-  /* ===== ヒーロー見出し（行間ゆったり） ===== */
-  .hero-headline { line-height: 1.4; }
-  @media (max-width: 768px) { .hero-headline { line-height: 1.45; } }
+  /* ===== ヒーロー見出し（はみ出し改行を防ぐ＝意図した位置でのみ改行） ===== */
+  .hero-headline {
+    font-size: clamp(1.35rem, 6.6vw, 5rem);
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  /* ===== ヒーロー背景：働く人を薄くあしらう ===== */
+  .hero-photo-strip {
+    position: absolute; inset: 0; z-index: 0;
+    display: flex; pointer-events: none;
+  }
+  .hero-photo-strip img { flex: 1; height: 100%; object-fit: cover; min-width: 0; opacity: 0.12; }
+  @media (max-width: 768px) { .hero-photo-strip img:nth-child(n+5) { display: none; } }
 
   /* ===== フックチップ（浮遊＋光のスイープ） ===== */
   .hero-hooks { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
@@ -624,6 +635,23 @@
   }
   .jobs-collage img { width: 100%; height: 100%; object-fit: cover; }
   .jobs-collage img:first-child { grid-row: 1 / 3; }
+
+  /* ===== メンバー紹介（Promiseセクション） ===== */
+  .member-stack { display: flex; flex-direction: column; gap: 28px; height: 100%; justify-content: center; }
+  .member { display: flex; align-items: center; gap: 18px; }
+  .member-photo {
+    width: 104px; height: 104px; border-radius: 50%; object-fit: cover;
+    flex-shrink: 0; border: 3px solid rgba(251,191,36,0.65);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  }
+  .member-photo--ph {
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    background: rgba(255,255,255,0.06); border: 2px dashed rgba(251,191,36,0.5);
+    color: rgba(255,255,255,0.55); font-size: 11px; font-weight: 700; line-height: 1.4;
+  }
+  .member-role { font-size: 12px; color: #fbbf24; font-weight: 700; margin-bottom: 3px; }
+  .member-name { font-size: 21px; font-weight: 900; color: #fff; font-family: 'Noto Serif JP', serif; line-height: 1.2; }
+  .member-name span { font-size: 12px; color: rgba(255,255,255,0.5); font-family: 'Inter', sans-serif; font-weight: 600; margin-left: 4px; }
 </style>
 </head>
 <body>
@@ -652,6 +680,14 @@
 
 <!-- ===== HERO ===== -->
 <section class="bg-sun-fade relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
+  <div class="hero-photo-strip" aria-hidden="true">
+    <img src="images/job-food.jpg" alt="">
+    <img src="images/job-sales.jpg" alt="">
+    <img src="images/job-tech.jpg" alt="">
+    <img src="images/job-hotel.jpg" alt="">
+    <img src="images/job-logistics.jpg" alt="">
+    <img src="images/job-medical.jpg" alt="">
+  </div>
   <div class="blob-bg" style="width:480px; height:480px; background:#fbbf24; top:-160px; right:-120px;"></div>
   <div class="blob-bg" style="width:400px; height:400px; background:#f97316; bottom:-200px; left:-160px; opacity:0.25;"></div>
 
@@ -661,7 +697,7 @@
       求人を出しても応募ゼロ。採用コストが高過ぎる。面接調整の時間がない。<br class="hidden md:block">
       ── そんな悩みを抱える<strong class="text-ink">経営者の方へ。</strong>
     </p>
-    <h1 class="hero-headline display-jp text-5xl md:text-7xl lg:text-8xl mb-8 reveal reveal-delay-2">
+    <h1 class="hero-headline display-jp mb-8 reveal reveal-delay-2">
       わけあって、応募が来る。<br>
       だから、<span class="text-orange">採用</span>が進む。
     </h1>
@@ -1068,7 +1104,7 @@
       </div>
 
       <div class="industry-card reveal reveal-delay-2">
-        <img src="images/job-tech.jpg" alt="専門職・技術職の仕事" class="industry-photo">
+        <img src="images/job-tech.jpg" alt="専門職・技術職の仕事" class="industry-photo" style="object-position: center 15%;">
         <div class="mb-4">
           <h3 class="display-jp text-2xl mb-1">専門職・技術職</h3>
           <div class="text-xs text-ink-soft/60 font-inter font-bold tracking-widest uppercase">電気工事士 / 整備 / 美容師</div>
@@ -1394,12 +1430,20 @@
         <p class="text-sm text-white/50 mt-6">AIENKIEN ＝ "不思議なめぐり合わせ" を意味する四字熟語「合縁奇縁」が由来。<br>コーポレートミッションは「ワクワクと感動を届ける」。</p>
       </div>
       <div class="lg:col-span-5 reveal reveal-delay-1">
-        <div class="photo-frame" style="height: 480px;">
-          <!-- TODO: images/promise-member.png に差し替え -->
-          <div class="photo-ph">
-            <div class="ph-ico">🙋‍♂️</div>
-            <div class="ph-label">担当者／チームの写真</div>
-            <div class="ph-sub">images/promise-member.png</div>
+        <div class="member-stack" style="min-height: 420px;">
+          <div class="member">
+            <img src="images/member-hiraki.jpg" alt="平木 宏空" class="member-photo">
+            <div>
+              <div class="member-role">代表取締役｜CEO｜広告事業責任者</div>
+              <div class="member-name">平木 宏空<span>/ Hirotaka Hiraki</span></div>
+            </div>
+          </div>
+          <div class="member">
+            <img src="images/member-nakayama.jpg" alt="中山 拓也" class="member-photo">
+            <div>
+              <div class="member-role">専務取締役｜Co-founder｜採用代行事業責任者</div>
+              <div class="member-name">中山 拓也<span>/ Takuya Nakayama</span></div>
+            </div>
           </div>
         </div>
       </div>
