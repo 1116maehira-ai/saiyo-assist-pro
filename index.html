@@ -695,7 +695,7 @@
     <img src="images/job-tech.jpg" alt="">
     <img src="images/job-hotel.jpg" alt="">
     <img src="images/job-logistics.jpg" alt="" style="object-position: 40% 18%;">
-    <img src="images/job-medical.jpg" alt="" style="object-position: 72% 30%;">
+    <img src="images/job-medical.jpg" alt="" style="object-position: 49% 28%;">
   </div>
   <div class="blob-bg" style="width:480px; height:480px; background:#fbbf24; top:-160px; right:-120px;"></div>
   <div class="blob-bg" style="width:400px; height:400px; background:#f97316; bottom:-200px; left:-160px; opacity:0.25;"></div>
@@ -727,7 +727,7 @@
     </div>
     <div class="flex flex-wrap gap-4 reveal reveal-delay-4">
       <a href="#contact" class="btn-primary">
-        まずは無料相談（メール）
+        無料で相談してみる
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
       <a href="#flow" class="btn-secondary">
@@ -1499,14 +1499,55 @@
       「うちの職種でも応募が来る？」── そんな疑問にもお答えします。<br>
       <strong class="text-ink">相談だけでも大歓迎です。</strong>
     </p>
-    <div class="flex flex-wrap gap-4 justify-center mb-8 reveal reveal-delay-3">
-      <a href="mailto:nakayama@aienkien.com?subject=【採用アシストPro】無料相談・お問い合わせ&body=以下にご記入の上、ご送信ください。%0A%0A■ 会社名:%0A■ お名前:%0A■ ご連絡先（メール）:%0A■ 募集したい職種・雇用形態:%0A■ 現在の採用のお悩み:%0A■ ご希望プラン（ライト／スタンダード／プレミアム／未定）:%0A" class="btn-primary text-lg">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
-        メールで無料相談する
-      </a>
+    <div class="bg-white rounded-3xl p-7 md:p-10 shadow-2xl text-left max-w-2xl mx-auto reveal reveal-delay-3">
+      <form id="contactForm" class="space-y-5" onsubmit="return submitForm(event)">
+        <div>
+          <label class="block text-sm font-bold text-ink mb-2">会社名 <span class="text-orange">*</span></label>
+          <input type="text" name="company" required placeholder="株式会社○○" class="w-full px-4 py-3 border-2 border-ink/10 rounded-xl focus:border-orange focus:outline-none transition text-ink">
+        </div>
+        <div class="grid md:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-sm font-bold text-ink mb-2">ご担当者名 <span class="text-orange">*</span></label>
+            <input type="text" name="name" required placeholder="山田 太郎" class="w-full px-4 py-3 border-2 border-ink/10 rounded-xl focus:border-orange focus:outline-none transition text-ink">
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-ink mb-2">電話番号</label>
+            <input type="tel" name="phone" placeholder="090-0000-0000" class="w-full px-4 py-3 border-2 border-ink/10 rounded-xl focus:border-orange focus:outline-none transition text-ink">
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-ink mb-2">メールアドレス <span class="text-orange">*</span></label>
+          <input type="email" name="email" required placeholder="example@company.com" class="w-full px-4 py-3 border-2 border-ink/10 rounded-xl focus:border-orange focus:outline-none transition text-ink">
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-ink mb-2">ご相談内容 <span class="text-orange">*</span></label>
+          <select name="inquiry_type" required class="w-full px-4 py-3 border-2 border-ink/10 rounded-xl focus:border-orange focus:outline-none transition text-ink bg-white">
+            <option value="">選択してください</option>
+            <option value="まずは無料相談・診断">まずは無料相談・採用課題の診断</option>
+            <option value="ライトプラン">ライトプラン（¥39,800〜）について</option>
+            <option value="スタンダードプラン">スタンダードプラン（¥79,800〜）について</option>
+            <option value="プレミアム">プレミアム（応相談）について</option>
+            <option value="資料請求">資料請求</option>
+            <option value="その他">その他</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-ink mb-2">募集したい職種・雇用形態</label>
+          <input type="text" name="job" placeholder="例：ホールスタッフ（アルバイト）／ルート営業（正社員）" class="w-full px-4 py-3 border-2 border-ink/10 rounded-xl focus:border-orange focus:outline-none transition text-ink">
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-ink mb-2">現在の採用のお悩み・ご質問</label>
+          <textarea name="message" rows="4" placeholder="応募が来ない／採用コストが高い／求人を作る時間がない など、お気軽にご記入ください" class="w-full px-4 py-3 border-2 border-ink/10 rounded-xl focus:border-orange focus:outline-none transition resize-none text-ink"></textarea>
+        </div>
+        <button type="submit" id="submitBtn" class="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-black text-white text-lg shadow-xl transform transition-all hover:scale-[1.02] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100" style="background: linear-gradient(135deg, #f97316 0%, #fbbf24 100%); box-shadow: 0 8px 24px rgba(249, 115, 22, 0.4);">
+          <span id="submitBtnText">無料相談を送信する</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+        <div id="formMessage" class="hidden text-center py-4 rounded-xl text-sm font-bold"></div>
+      </form>
     </div>
-    <p class="text-sm text-ink-soft/70 reveal reveal-delay-4">
-      返信は最短当日、遅くとも翌営業日中にお返しします。
+    <p class="text-sm text-ink-soft/70 mt-8 reveal reveal-delay-4">
+      ご相談・資料請求は無料です。返信は最短当日、遅くとも翌営業日中にお返しします。
     </p>
   </div>
 </section>
@@ -1569,6 +1610,61 @@
       if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
   });
+
+  // ============================================
+  // お問い合わせフォーム送信処理（Google Apps Script連携）
+  // ※ GAS_URL を 採用アシストPro 用のエンドポイントに差し替えてください
+  // ============================================
+  const GAS_URL = 'https://script.google.com/macros/s/AKfycbwjzgYC2EmmXxkM7i4ZkjEjLdm45naMU58GOO5AOa6ZzzCA-g7bIlPTZpWQeXWxhSlkLg/exec';
+
+  function submitForm(event) {
+    event.preventDefault();
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const submitBtnText = document.getElementById('submitBtnText');
+    const messageDiv = document.getElementById('formMessage');
+
+    submitBtn.disabled = true;
+    submitBtnText.textContent = '送信中...';
+    messageDiv.className = 'hidden';
+
+    const formData = new FormData(form);
+    const urlEncoded = new URLSearchParams(formData).toString();
+
+    fetch(GAS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: urlEncoded
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.result === 'success') {
+        form.reset();
+        messageDiv.className = 'text-center py-5 px-4 rounded-xl text-base font-bold';
+        messageDiv.style.cssText = 'background: #fff7ed; color: #c2410c; border: 2px solid #fdba74;';
+        messageDiv.innerHTML = '✅ 送信ありがとうございます！<br><span style="font-size: 13px; font-weight: 500;">担当者より、最短当日〜2営業日以内にご連絡いたします。</span>';
+        messageDiv.classList.remove('hidden');
+        submitBtnText.textContent = '送信完了';
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtnText.textContent = '無料相談を送信する';
+        }, 5000);
+      } else {
+        throw new Error(data.message || '送信エラー');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      messageDiv.className = 'text-center py-5 px-4 rounded-xl text-base font-bold';
+      messageDiv.style.cssText = 'background: #fef2f2; color: #dc2626; border: 2px solid #fca5a5;';
+      messageDiv.innerHTML = '⚠️ 送信に失敗しました。<br><span style="font-size: 13px; font-weight: 500;">お手数ですが、しばらくしてから再度お試しください。</span>';
+      messageDiv.classList.remove('hidden');
+      submitBtn.disabled = false;
+      submitBtnText.textContent = '無料相談を送信する';
+    });
+
+    return false;
+  }
 </script>
 </body>
 </html>
