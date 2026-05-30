@@ -539,8 +539,8 @@
     position: absolute; inset: 0; z-index: 0;
     display: flex; pointer-events: none;
   }
-  .hero-photo-strip img { flex: 1; height: 100%; object-fit: cover; min-width: 0; opacity: 0.12; }
-  @media (max-width: 768px) { .hero-photo-strip img:nth-child(n+5) { display: none; } }
+  .hero-photo-strip img { flex: 1; height: 100%; object-fit: cover; object-position: center 22%; min-width: 0; opacity: 0.2; }
+  @media (max-width: 768px) { .hero-photo-strip img:nth-child(n+4) { display: none; } }
 
   /* ===== フックチップ（浮遊＋光のスイープ） ===== */
   .hero-hooks { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
@@ -679,14 +679,14 @@
 </nav>
 
 <!-- ===== HERO ===== -->
-<section class="bg-sun-fade relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
+<section class="bg-sun-fade relative overflow-hidden pt-[52vh] pb-20 md:pt-40 md:pb-28">
   <div class="hero-photo-strip" aria-hidden="true">
     <img src="images/job-food.jpg" alt="">
     <img src="images/job-sales.jpg" alt="">
     <img src="images/job-tech.jpg" alt="">
     <img src="images/job-hotel.jpg" alt="">
-    <img src="images/job-logistics.jpg" alt="">
-    <img src="images/job-medical.jpg" alt="">
+    <img src="images/job-logistics.jpg" alt="" style="object-position: 40% 18%;">
+    <img src="images/job-medical.jpg" alt="" style="object-position: 60% 18%;">
   </div>
   <div class="blob-bg" style="width:480px; height:480px; background:#fbbf24; top:-160px; right:-120px;"></div>
   <div class="blob-bg" style="width:400px; height:400px; background:#f97316; bottom:-200px; left:-160px; opacity:0.25;"></div>
@@ -1476,13 +1476,14 @@
 
   <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
     <div class="section-tag justify-center mb-8 reveal">Let's Start</div>
-    <h2 class="display-jp text-5xl md:text-8xl mb-8 reveal reveal-delay-1">
+    <h2 class="hero-headline display-jp mb-8 reveal reveal-delay-1">
       まずは、<span class="text-orange italic">無料相談</span><br>
       から。
     </h2>
     <p class="text-lg md:text-xl text-ink-soft leading-relaxed mb-12 reveal reveal-delay-2">
       御社の採用課題を、無料で診断します。<br>
-      「うちの職種でも応募が来る？」── そんな疑問にもお答えします。<strong class="text-ink">相談だけでも大歓迎です。</strong>
+      「うちの職種でも応募が来る？」── そんな疑問にもお答えします。<br>
+      <strong class="text-ink">相談だけでも大歓迎です。</strong>
     </p>
     <div class="flex flex-wrap gap-4 justify-center mb-8 reveal reveal-delay-3">
       <a href="mailto:nakayama@aienkien.com?subject=【採用アシストPro】無料相談・お問い合わせ&body=以下にご記入の上、ご送信ください。%0A%0A■ 会社名:%0A■ お名前:%0A■ ご連絡先（メール）:%0A■ 募集したい職種・雇用形態:%0A■ 現在の採用のお悩み:%0A■ ご希望プラン（ライト／スタンダード／プレミアム／未定）:%0A" class="btn-primary text-lg">
@@ -1491,7 +1492,7 @@
       </a>
     </div>
     <p class="text-sm text-ink-soft/70 reveal reveal-delay-4">
-      担当：中山　／　返信は最短当日、遅くとも翌営業日中に。
+      返信は最短当日、遅くとも翌営業日中にお返しします。
     </p>
   </div>
 </section>
@@ -1499,7 +1500,7 @@
 <!-- ===== FOOTER ===== -->
 <footer class="bg-ink text-white py-20">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="grid md:grid-cols-3 gap-12 mb-12">
+    <div class="grid md:grid-cols-2 gap-12 mb-12">
       <div>
         <div class="display-jp text-3xl mb-4">採用アシスト<span class="text-orange">Pro</span></div>
         <p class="text-white/60 text-sm leading-relaxed">応募を最大化させる、定額制の採用代行サービス。<br>御社の採用業務、プロにまる投げ。</p>
@@ -1512,14 +1513,6 @@
           設立 2020年10月<br>
           〒902-0076<br>
           沖縄県那覇市与儀1-7-30
-        </div>
-      </div>
-      <div>
-        <div class="text-xs font-inter font-bold tracking-widest text-gold mb-4 uppercase">Contact</div>
-        <div class="text-sm text-white/80 leading-loose">
-          <a href="mailto:nakayama@aienkien.com" class="hover:text-orange transition-colors">nakayama@aienkien.com</a><br>
-          担当：中山<br>
-          <a href="https://aienkien.com/" target="_blank" rel="noopener" class="hover:text-orange transition-colors">https://aienkien.com/</a>
         </div>
       </div>
     </div>
