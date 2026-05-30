@@ -534,13 +534,22 @@
     white-space: nowrap;
   }
 
-  /* ===== ヒーロー背景：働く人を薄くあしらう ===== */
+  /* ===== ヒーロー背景：働く人を薄くあしらう（PCのみ） ===== */
   .hero-photo-strip {
     position: absolute; inset: 0; z-index: 0;
-    display: flex; pointer-events: none;
+    display: none; pointer-events: none;
   }
   .hero-photo-strip img { flex: 1; height: 100%; object-fit: cover; object-position: center 22%; min-width: 0; opacity: 0.2; }
-  @media (max-width: 768px) { .hero-photo-strip img:nth-child(n+4) { display: none; } }
+  @media (min-width: 768px) { .hero-photo-strip { display: flex; } }
+
+  /* ===== モバイル専用バナー（16:9・不透明・顔が見える） ===== */
+  .hero-banner-mobile {
+    display: flex; gap: 4px; width: 100%; aspect-ratio: 16 / 9;
+    border-radius: 20px; overflow: hidden; margin-bottom: 32px;
+    box-shadow: 0 14px 40px -12px rgba(249,115,22,0.3);
+  }
+  .hero-banner-mobile img { flex: 1; height: 100%; object-fit: cover; min-width: 0; }
+  @media (min-width: 768px) { .hero-banner-mobile { display: none; } }
 
   /* ===== フックチップ（浮遊＋光のスイープ） ===== */
   .hero-hooks { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
@@ -679,19 +688,24 @@
 </nav>
 
 <!-- ===== HERO ===== -->
-<section class="bg-sun-fade relative overflow-hidden pt-[52vh] pb-20 md:pt-40 md:pb-28">
+<section class="bg-sun-fade relative overflow-hidden pt-28 pb-20 md:pt-40 md:pb-28">
   <div class="hero-photo-strip" aria-hidden="true">
     <img src="images/job-food.jpg" alt="">
     <img src="images/job-sales.jpg" alt="">
     <img src="images/job-tech.jpg" alt="">
     <img src="images/job-hotel.jpg" alt="">
     <img src="images/job-logistics.jpg" alt="" style="object-position: 40% 18%;">
-    <img src="images/job-medical.jpg" alt="" style="object-position: 60% 18%;">
+    <img src="images/job-medical.jpg" alt="" style="object-position: 72% 30%;">
   </div>
   <div class="blob-bg" style="width:480px; height:480px; background:#fbbf24; top:-160px; right:-120px;"></div>
   <div class="blob-bg" style="width:400px; height:400px; background:#f97316; bottom:-200px; left:-160px; opacity:0.25;"></div>
 
   <div class="max-w-5xl mx-auto px-6 relative z-10">
+    <div class="hero-banner-mobile">
+      <img src="images/job-food.jpg" alt="飲食で働く人" style="object-position: center 30%;">
+      <img src="images/job-hotel.jpg" alt="接客で働く人" style="object-position: center 22%;">
+      <img src="images/job-office.jpg" alt="オフィスで働く人" style="object-position: center 28%;">
+    </div>
     <div class="section-tag mb-6 reveal">採用アシストPro · 定額制 採用代行 · OKINAWA</div>
     <p class="text-ink-soft font-medium mb-6 reveal reveal-delay-1 leading-relaxed">
       求人を出しても応募ゼロ。採用コストが高過ぎる。面接調整の時間がない。<br class="hidden md:block">
