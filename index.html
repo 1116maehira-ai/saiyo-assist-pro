@@ -661,6 +661,15 @@
   .member-role { font-size: 12px; color: #fbbf24; font-weight: 700; margin-bottom: 3px; }
   .member-name { font-size: 21px; font-weight: 900; color: #fff; font-family: 'Noto Serif JP', serif; line-height: 1.2; }
   .member-name span { font-size: 12px; color: rgba(255,255,255,0.5); font-family: 'Inter', sans-serif; font-weight: 600; margin-left: 4px; }
+
+  /* ===== 動画埋め込み（16:9レスポンシブ） ===== */
+  .video-embed {
+    position: relative; width: 100%; aspect-ratio: 16 / 9;
+    border-radius: 16px; overflow: hidden;
+    box-shadow: 0 20px 48px -12px rgba(0,0,0,0.5);
+    background: #000;
+  }
+  .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 </style>
 </head>
 <body>
@@ -813,6 +822,36 @@
           <p class="display-jp text-2xl md:text-3xl leading-snug">
             この<span class="text-gold">「来ない」</span>を、<span class="text-orange">まる投げ</span>で<br class="hidden md:block"><span class="hl-underline">全部ひっくり返す</span>。
           </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 実績紹介ムービー ===== -->
+<section id="movie" class="py-24 md:py-32 bg-ink-deep text-white relative overflow-hidden">
+  <div class="blob-bg" style="width:400px; height:400px; background:#f97316; top:-100px; right:-100px; opacity:0.15;"></div>
+  <div class="blob-bg" style="width:500px; height:500px; background:#fbbf24; bottom:-200px; left:-200px; opacity:0.1;"></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-14 reveal">
+      <div class="section-tag light justify-center mb-6">実績紹介 · Case Movie</div>
+      <h2 class="display-jp text-4xl md:text-6xl mb-6">
+        地方特化の採用代行を、<br>
+        月<span class="text-orange">3.98万円</span>〜。
+      </h2>
+      <p class="text-white/70 text-lg max-w-2xl mx-auto">動画で見る、採用アシストProの実績と中身。</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <div class="reveal">
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/ftmGPjkS9Qs" title="採用アシストPro 実績紹介①" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/Qe2UyKhdg1M" title="採用アシストPro 実績紹介②" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
       </div>
     </div>
